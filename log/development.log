@@ -218,3 +218,55 @@ Migrating to DeviseCreateAdmins (20240409223759)
   [1m[36mAdmin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "admins" WHERE "admins"."email" = ? LIMIT ?[0m  [["email", "dannyland20@gmail.com"], ["LIMIT", 1]]
   [1m[36mAdmin Create (0.2ms)[0m  [1m[32mINSERT INTO "admins" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "dannyland20@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-04-09 22:40:12.415555"], ["updated_at", "2024-04-09 22:40:12.415555"]]
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2024-04-09 18:00:26 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 163)
+  Rendered layout layouts/application.html.erb (Duration: 192.2ms | Allocations: 51547)
+Completed 200 OK in 233ms (Views: 210.7ms | ActiveRecord: 0.0ms | Allocations: 55602)
+
+
+Started GET "/admins/" for 127.0.0.1 at 2024-04-09 18:00:33 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/admins"):
+  
+Started GET "/admins/sign_in" for 127.0.0.1 at 2024-04-09 18:00:49 -0500
+Processing by Admins::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering admins/sessions/new.html.erb within layouts/application
+  Rendered admins/shared/_links.html.erb (Duration: 1.1ms | Allocations: 559)
+  Rendered admins/sessions/new.html.erb within layouts/application (Duration: 18.3ms | Allocations: 3776)
+  Rendered layout layouts/application.html.erb (Duration: 33.4ms | Allocations: 9306)
+Completed 200 OK in 63ms (Views: 36.2ms | ActiveRecord: 3.4ms | Allocations: 21057)
+
+
+Started GET "/admins/password/new" for 127.0.0.1 at 2024-04-09 18:00:57 -0500
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/dannyland20/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/passwords/new.html.erb within layouts/application
+  Rendered /home/dannyland20/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 1.2ms | Allocations: 202)
+  Rendered /home/dannyland20/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_links.html.erb (Duration: 2.4ms | Allocations: 525)
+  Rendered /home/dannyland20/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/passwords/new.html.erb within layouts/application (Duration: 13.4ms | Allocations: 1608)
+  Rendered layout layouts/application.html.erb (Duration: 31.7ms | Allocations: 6857)
+Completed 200 OK in 37ms (Views: 33.6ms | ActiveRecord: 0.0ms | Allocations: 7892)
+
+
+Started POST "/admins/sign_in" for 127.0.0.1 at 2024-04-09 18:01:00 -0500
+Processing by Admins::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin"=>{"email"=>"dannyland20@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."email" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["email", "dannyland20@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 287ms (ActiveRecord: 0.2ms | Allocations: 6488)
+
+
+Started GET "/" for 127.0.0.1 at 2024-04-09 18:01:00 -0500
+Processing by HomeController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 5510)
+Completed 200 OK in 16ms (Views: 15.7ms | ActiveRecord: 0.0ms | Allocations: 5810)
+
+
